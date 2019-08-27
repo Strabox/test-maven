@@ -22,8 +22,8 @@ echo "mvn -B release:prepare -D releaseVersion=$RELEASE_VERSION -D developmentVe
 mvn -B release:prepare -D releaseVersion="$RELEASE_VERSION" -D developmentVersion="$NEXT_DEVELOPMENT_VERSION" -D scmCommentPrefix="$GIT_COMMIT_COMMENT_PREFIX" -D dryRun=true
 
 # 2nd - Maven release prepare
-echo "mvn -B release:resume -D releaseVersion=$RELEASE_VERSION -D developmentVersion=$NEXT_DEVELOPMENT_VERSION -D scmCommentPrefix=$GIT_COMMIT_COMMENT_PREFIX"
-mvn -B release:prepare -D releaseVersion="$RELEASE_VERSION" -D developmentVersion="$NEXT_DEVELOPMENT_VERSION" -D scmCommentPrefix="$GIT_COMMIT_COMMENT_PREFIX"
+echo "mvn -B release:prepare -Dresume=false  -D releaseVersion=$RELEASE_VERSION -D developmentVersion=$NEXT_DEVELOPMENT_VERSION -D scmCommentPrefix=$GIT_COMMIT_COMMENT_PREFIX"
+mvn -B release:prepare -Dresume=false -D releaseVersion="$RELEASE_VERSION" -D developmentVersion="$NEXT_DEVELOPMENT_VERSION" -D scmCommentPrefix="$GIT_COMMIT_COMMENT_PREFIX"
 
 MVN_RELEASE_PREPARE_EXIT_CODE=$?
 if [ "$MVN_RELEASE_PREPARE_EXIT_CODE" -ne 0 ]; then
