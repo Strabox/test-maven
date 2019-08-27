@@ -2,23 +2,28 @@
 #   Release.sh is a wrapper script around maven release plugin and git to perform a fully release flow    #
 ###########################################################################################################
 
-# Pre-Validations for a smooth release process...
+# Release script pre-Validations for a smooth release process...
 if [ "$#" -ne 2 ]; then
     echo "You must enter a release version and a next development version"
     exit 1
 fi
 
-
 echo "Starting BDU Commons v2 release..."
+
+GIT_COMMIT_COMMENT_PREFIX="[Release] "
 
 RELEASE_VERSION=$1
 NEXT_DEVELOPMENT_VERSION=$2
 
 echo "Releasing: '$RELEASE_VERSION' -> Next Dev Version: '$NEXT_DEVELOPMENT_VERSION'"
 
-# Maven release prepare
-echo "mvn -B release:prepare -D releaseVersion=$RELEASE_VERSION -D developmentVersion=$NEXT_DEVELOPMENT_VERSION"
-mvn -B release:prepare -D releaseVersion="$RELEASE_VERSION" -D developmentVersion="$NEXT_DEVELOPMENT_VERSION"
+# 1st - Maven release prepare dry run (used to maven and git basic validations before startint the release process)
+echo "mvn -B release:prepare -D releaseVersion=$RELEASE_VERSION -D developmentVersion=$NEXT_DEVELOPMENT_VERSION -D dryRun"
+mvn -B release:prepare -D releaseVersion="$RELEASE_VERSION" -D developmentVersion="$NEXT_DEVELOPMENT_VERSION" -D dryRun
+
+# 2nd - Maven release prepare
+echo "mvn -B release:prepare -D releaseVersion=$RELEASE_VERSION -D developmentVersion=$NEXT_DEVELOPMENT_VERSION -D scmCommentPrefix=$GIT_COMMIT_COMMENT_PREFIX"
+mvn -B release:prepare -D releaseVersion="$RELEASE_VERSION" -D developmentVersion="$NEXT_DEVELOPMENT_VERSION" -D scmCommentPrefix="$GIT_COMMIT_COMMENT_PREFIX"
 
 MVN_RELEASE_PREPARE_EXIT_CODE=$?
 if [ "$MVN_RELEASE_PREPARE_EXIT_CODE" -ne 0 ]; then
@@ -26,7 +31,7 @@ if [ "$MVN_RELEASE_PREPARE_EXIT_CODE" -ne 0 ]; then
   exit 2
 fi
 
-# Maven release perform
+# 3rd - Maven release perform
 echo "mvn -B release:perform"
 mvn -B release:perform
 
@@ -36,7 +41,7 @@ if [ "$MVN_RELEASE_PERFORM_EXIT_CODE" -ne 0 ]; then
   exit 3
 fi
 
-# Git merge to master branch
+# 4th - Git merge to master branch
 
 #TODO
 
