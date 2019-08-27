@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352223f8-e9cb-4629-8630-24d11fe01a52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/release.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module-1/target/analysis/compile" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/analysis/compile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module-1/target/classes/com/test/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/classes/com/test/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module-1/target/module-1-1.0-SNAPSHOT-javadoc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/module-1-1.0-SNAPSHOT-javadoc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module-1/target/module-1-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/module-1-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons-test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons-test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,6 +43,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="/opt/visualvm/bin/visualvm" />
@@ -92,8 +89,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566941856490</updated>
-      <workItem from="1566941858097" duration="2197000" />
+      <workItem from="1566941858097" duration="2551000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit">
+      <created>1566944078532</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566944078532</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,5 +114,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
   </component>
 </project>
