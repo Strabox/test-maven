@@ -1,1 +1,0 @@
-Index.PACKAGES = {"com" : [], "com.test" : [{"class" : "com\/test\/Test.html", "name" : "com.test.Test"}]};
