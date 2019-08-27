@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xpandit.commons.test</groupId>
+    <artifactId>commons-test</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>module-1</module>
+    </modules>
+
+    <!-- Xpand-IT Big Data Developers that maintain the library -->
+    <developers>
+        <developer>
+            <id>afpp</id>
+            <name>Andre Pires</name>
+            <email>andre.pires@xpand-it.com</email>
+            <organization>Xpand IT</organization>
+            <organizationUrl>http://www.xpand-it.com/</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Lisbon</timezone>
+        </developer>
+    </developers>
+
+    <!-- Issues management.  -->
+    <issueManagement>
+        <system>Jira</system>
+        <url><!-- TODO verify with PMs if a project with Jira could be created to maintain issues. --></url>
+    </issueManagement>
+
+
+    <scm>
+        <!-- TODO Request an xpand's repository  -->
+    </scm>
+
+    <distributionManagement>
+        <!-- Xpand releases artifactory. Production applications should get releases only artifacts. -->
+        <repository>
+            <id>xpand-releases</id>
+            <name>xpand-releases</name>
+            <url>http://apps.xpand-it.com/artifactory/libs-releases-local</url>
+        </repository>
+        <!-- Xpand snapshots artifactory. -->
+        <snapshotRepository>
+            <id>xpand-snapshots</id>
+            <name>xpand-snapshots</name>
+            <url>http://apps.xpand-it.com/artifactory/libs-snapshots-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- External repositories necessary. Try maintain it to the minimum possible. -->
+    <repositories>
+        <!-- Cloudera repository for CDH specific libraries. -->
+        <repository>
+            <id>cloudera</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <skipITs>false</skipITs>    <!-- Flag used to skip integration tests. Similar to the 'skipTests' builtin flag. -->
+        <skipTests>false</skipTests>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Java default version. It should only change when most hadoop techs and spark support it. -->
+        <java.default.version>1.8</java.default.version>
+
+        <!-- Scala default version. -->
+        <scala.major.version>2.11</scala.major.version>
+        <scala.default.version>${scala.major.version}.8</scala.default.version>
+
+        <!-- ===================== Dependencies versions ====================== -->
+
+        <!-- DO NOT PUT HERE LIBRARIES DEPENDENCIES VERSION -->
+        <!-- Each sub-module should handle its versions because each sub-module probably will use its own versions
+             and different versions may have different APIs that would broke code of others submodules. -->
+
+        <!-- ===================== Maven plugins versions ====================== -->
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>    <!-- Version: May 2019 -->
+        <maven.scala.plugin.version>4.1.1</maven.scala.plugin.version>          <!-- Version: July 2019 -->
+        <maven.enforcer.plugin.version>3.0.0-M2</maven.enforcer.plugin.version> <!-- Version: June 2019 -->
+        <maven.surefire.plugin.version>3.0.0-M3</maven.surefire.plugin.version> <!-- Version: December 2018 -->
+        <maven.scalatest.plugin.version>2.0.0</maven.scalatest.plugin.version>  <!-- Version: December 2017 -->
+        <maven.source.plugin.version>3.1.0</maven.source.plugin.version>        <!-- Version: May 2019 -->
+        <maven.javadoc.plugin.version>3.1.1</maven.javadoc.plugin.version>      <!-- Version: July 2019 -->
+        <maven.deploy.plugin.version>3.0.0-M1</maven.deploy.plugin.version>     <!-- Version: September 2018 -->
+        <maven.release.plugin.version>2.5.3</maven.release.plugin.version>      <!-- Version: October 2015 -->
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- DO NOT PUT HERE LIBRARIES -->
+            <!-- Each sub-module should handle its versions because each sub-module probably will use its own versions
+                 and different versions may have different APIs that would broke code of others submodules. -->
+
+            <!-- Scala library. Can be overrided in submodules- -->
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.default.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- DO NOT CHANGE this default configurations here without brainstorming with other devs. -->
+                <!-- This section contains the most used plugins with the best defaults configurations.
+                     The configurations of each plugin can be overrided in each submodule. -->
+
+                <!-- ======================= Maven Compile Phase ======================== -->
+
+                <!-- Maven compiler plugin. Used to compile java source code. -->
+                <!-- Documentation: https://maven.apache.org/plugins/maven-compiler-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.default.version}</source>
+                        <target>${java.default.version}</target>
+                        <testSource>${java.default.version}</testSource>
+                        <testTarget>${java.default.version}</testTarget>
+                    </configuration>
+                </plugin>
+
+                <!-- Scala maven compiler plugin. Used to compile scala source code. -->
+                <!-- Documentation: https://github.com/davidB/scala-maven-plugin -->
+                <plugin>
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <version>${maven.scala.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>scala-compile-first</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>scala-test-compile</id>
+                            <phase>process-test-resources</phase>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>scala-plugin-attach-javadocs</id>
+                            <goals>
+                                <goal>doc-jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Maven plugin for dependency enforcing (reproducible builds) -->
+                <!-- Documentation: https://maven.apache.org/enforcer/maven-enforcer-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven.enforcer.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-maven</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <banDuplicatePomDependencyVersions/>    <!-- Ban duplicate dependencies -->
+                                    <reactorModuleConvergence>              <!-- Sanity validation for the reactor -->
+                                        <message>Invalid validation for reactor</message>
+                                        <ignoreModuleDependencies>true</ignoreModuleDependencies>
+                                    </reactorModuleConvergence>
+                                    <requireMavenVersion>
+                                        <version>[3.5.x,)</version>  <!-- Mandatory for devs to have adequate maven version. -->
+                                        <message>Invalid Maven version. It should, at least, be 3.5.x</message>
+                                    </requireMavenVersion>
+                                    <requireJavaVersion>
+                                        <version>1.8.0-x</version>  <!-- Mandatory for devs to have JDK 8 -->
+                                        <message>Invalid JDK version. It should, be 1.8-0.x</message>
+                                    </requireJavaVersion>
+                                </rules>
+                                <fail>true</fail>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- ================================= Maven Test Phase ==================================== -->
+
+                <!-- Maven surefire plugin. Maven plugin for running java tests suites using Junit or TestNG libraries. -->
+                <!-- Documentation: https://maven.apache.org/surefire/maven-surefire-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>surefire-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <excludes>
+                                    <exclude>**/*IntegrationTest</exclude>
+                                </excludes>
+                                <skipTests>${skipTests}</skipTests>
+                            </configuration>
+                        </execution>
+                        <!-- Integration tests classes must follow the suffixes below -->
+                        <execution>
+                            <id>surefire-integration-test</id>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <excludes>
+                                    <exclude>none</exclude>
+                                </excludes>
+                                <includes>
+                                    <!-- Integration test classes should have the following suffixes. -->
+                                    <include>**/*IntegrationTest</include>
+                                </includes>
+                                <skipTests>${skipITs}</skipTests>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Scalatest plugin. Maven plugin for running scala tests suites using scalatest and other tests libraries. -->
+                <!-- Documentation: http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin -->
+                <plugin>
+                    <groupId>org.scalatest</groupId>
+                    <artifactId>scalatest-maven-plugin</artifactId>
+                    <version>${maven.scalatest.plugin.version}</version>
+                    <configuration>
+                        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                        <junitxml>.</junitxml>
+                        <filereports>WDF TestSuite.txt</filereports>
+                    </configuration>
+                    <executions>
+                        <!-- Unit tests classes must follow the suffixes Test|Spec -->
+                        <execution>
+                            <id>scala-test-unit</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <suffixes>(?&lt;!Integration)(Test|Spec)</suffixes>
+                                <skipTests>${skipTests}</skipTests>
+                            </configuration>
+                        </execution>
+                        <!-- Integration tests classes must follow the suffixes below -->
+                        <execution>
+                            <id>scala-test-integration-test</id>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <!-- Integration test classes should have the following suffixes. -->
+                                <suffixes>(?&lt;=Integration)(Test|Spec)</suffixes>
+                                <skipTests>${skipITs}</skipTests>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- ======================= Maven Deploy Artifacts Phase ======================== -->
+
+                <!-- Maven deploy plugin. Used to deploy artifacts to the configured repositories in the
+                 distribution management section -->
+                <!-- Documentation: https://maven.apache.org/plugins/maven-deploy-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven.deploy.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>deploy</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>deploy</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Maven javadoc plugin. Used to generate javadoc files from commented code. -->
+                <!-- Documentation: https://maven.apache.org/plugins/maven-javadoc-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.javadoc.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Maven source plugin. Used to generate the jar with the source files -->
+                <!-- Documentation: https://maven.apache.org/plugins/maven-source-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven.source.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- ========================= Custom Release Phase ========================== -->
+
+                <!-- Maven release plugin (Release VCS management for releases) -->
+                <!-- Documentation: https://maven.apache.org/maven-release/maven-release-plugin/ -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven.release.plugin.version}</version>
+                    <!-- TODO: Study how releases will be made. One for each module with its own version ? -->
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <reporting>
+        <!-- Reporting section for plugins that produce code documentation like Javadoc e Scaladoc. -->
+        <!-- TODO: -->
+    </reporting>
+
+</project>
