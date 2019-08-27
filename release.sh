@@ -39,3 +39,5 @@ fi
 # Git merge to master branch
 
 #TODO
+
+echo "RELEASE FINISHED: '$RELEASE_VERSION' -> Next Dev Version: '$NEXT_DEVELOPMENT_VERSION'"
