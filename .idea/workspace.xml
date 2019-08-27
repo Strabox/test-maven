@@ -2,8 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="352223f8-e9cb-4629-8630-24d11fe01a52" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/commons-test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commons-test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/analysis/compile" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/analysis/compile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/allclasses-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/allclasses-noframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/com/test/Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/com/test/class-use/Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/com/test/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/com/test/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/com/test/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/com/test/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/package-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/classes/com/test/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/javadoc-bundle-options/package-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/module-1-1.0-SNAPSHOT-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/module-1-1.0-SNAPSHOT-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/module-1-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/site/scaladocs/com/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/site/scaladocs/com/package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/site/scaladocs/com/test/Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/site/scaladocs/com/test/Test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/site/scaladocs/com/test/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/site/scaladocs/com/test/package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/site/scaladocs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/site/scaladocs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/site/scaladocs/index/index-c.html" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/site/scaladocs/index/index-c.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/site/scaladocs/index/index-t.html" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/site/scaladocs/index/index-t.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-1/target/site/scaladocs/package.html" beforeDir="false" afterPath="$PROJECT_DIR$/module-1/target/site/scaladocs/package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/release.sh" beforeDir="false" afterPath="$PROJECT_DIR$/release.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +121,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1566941856490</updated>
-      <workItem from="1566941858097" duration="2551000" />
+      <workItem from="1566941858097" duration="2822000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <created>1566944078532</created>
@@ -98,7 +130,21 @@
       <option name="project" value="LOCAL" />
       <updated>1566944078532</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit">
+      <created>1566944412731</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1566944412731</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Commit">
+      <created>1566944448729</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1566944448729</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
