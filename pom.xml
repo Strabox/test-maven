@@ -5,7 +5,7 @@
     <groupId>com.xpandit.commons.test</groupId>
     <artifactId>commons-test</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4</version>
     <modules>
         <module>module-1</module>
     </modules>
@@ -35,7 +35,7 @@
     <scm>
         <developerConnection>scm:git:https://github.com/Strabox/test-maven.git</developerConnection>
         <!-- Project Bitbucket webpage. -->
-      <tag>HEAD</tag>
+      <tag>R1.0.4</tag>
   </scm>
 
     <distributionManagement>
