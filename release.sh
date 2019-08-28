@@ -13,11 +13,11 @@ NC='\033[0m'      # No Color
 # Write all arguments to stderr
 echo_stderr ()
 {
-  echo "${RED}" >&2
+  echo -e "${RED}" >&2
   echo "################################ Release Script ######################################" >&2
   echo  "$@" >&2
   echo "######################################################################################" >&2
-  echo "${NC}" >&2
+  echo -e "${NC}" >&2
 }
 
 # echo something with a div
