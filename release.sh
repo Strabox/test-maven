@@ -99,15 +99,15 @@ if [ $? -ne 0 ]; then
   exit 7
 fi
 
-# 7th - Git merge push to master branch. Update the remote master branch with the merged release.
-echo_div "git push master"
-git push master
+# 7th - Git merge push the local master branch to the remote master. Update the remote master branch with the merged release.
+echo_div "git push"
+git push
 if [ $? -ne 0 ]; then
   echo_stderr "RELEASE ERROR '$?' merging feature/development branch into master. DO NOT retry release, push to master manually."
   exit 8
 fi
 
-# 8th - Git heckout feature/development in order to return the git to the branch.
+# 8th - Git checkout feature/development in order to return the git state to dev branch.
 echo_div "git checkout feature/development"
 git checkout feature/development
 if [ $? -ne 0 ]; then
