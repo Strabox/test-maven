@@ -29,7 +29,7 @@ echo "Releasing: '$RELEASE_VERSION' -> Next Dev Version: '$NEXT_DEVELOPMENT_VERS
 
 # 1st - Git checkout feature/developmebt branch, where releases are performed.
 echo "git checkout feature/development"
-git checkout feature/developmen
+git checkout feature/development
 if [ $? -ne 0 ]; then
   echo_stderr "RELEASE ERROR '$?' checking out the git's feature/development branch"
   exit 2
